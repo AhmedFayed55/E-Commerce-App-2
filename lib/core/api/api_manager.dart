@@ -14,7 +14,7 @@ class ApiManager {
     Map<String, dynamic>? headers,
   }) {
     return dio.get(
-      ApiConstants.baseUrl + EndPoints.register,
+      ApiConstants.baseUrl + endPoint,
       queryParameters: queryParameters,
       options: Options(validateStatus: (status) => true, headers: headers),
     );
@@ -22,16 +22,16 @@ class ApiManager {
 
   Future<Response> postData({
     required String endPoint,
-    Object? body,
     Map<String, dynamic>? queryParameters,
     Options? options,
     Map<String, dynamic>? headers,
+    Object? body,
   }) {
     return dio.post(
-      ApiConstants.baseUrl + EndPoints.register,
+      ApiConstants.baseUrl + endPoint,
       queryParameters: queryParameters,
-      options: Options(validateStatus: (status) => true, headers: headers),
       data: body,
+      options: Options(headers: headers, validateStatus: (status) => true),
     );
   }
 }

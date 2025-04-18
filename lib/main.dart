@@ -1,4 +1,5 @@
 import 'package:e_commerce_app_clean/config/routes.dart';
+import 'package:e_commerce_app_clean/core/cache/shared_prefrence.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,9 +7,11 @@ import 'core/di/di.dart';
 import 'core/utils/app_theme.dart';
 import 'core/utils/bloc_observer.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   configureDependencies();
+  await SharedPreferenceUtils.init();
   runApp(MyApp());
 }
 

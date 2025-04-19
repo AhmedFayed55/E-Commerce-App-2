@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/app_styles.dart';
 import '../utils/app_colors.dart';
@@ -51,26 +52,23 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: filledColor ?? AppColors.whiteColor,
         filled: true,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(35.r),
           borderSide: BorderSide(
             color: borderColor ?? AppColors.blueColor,
-            width: 2,
-          ),
+            width: 1.3),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: borderColor ?? AppColors.blueColor,
-            width: 2,
-          ),
+            color: borderColor ?? AppColors.blueColor,),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: AppColors.blueColor, width: 2),
+          borderSide: BorderSide(color: AppColors.blueColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: AppColors.blueColor, width: 2),
+          borderSide: BorderSide(color: AppColors.blueColor),
         ),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,

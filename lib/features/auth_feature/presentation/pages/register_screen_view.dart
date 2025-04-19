@@ -1,10 +1,12 @@
+import 'package:e_commerce_app_clean/config/routes.dart';
 import 'package:e_commerce_app_clean/core/di/di.dart';
 import 'package:e_commerce_app_clean/core/utils/dialogue_utils.dart';
-import 'package:e_commerce_app_clean/features/auth_feature/presentation/manager/auth_cubit.dart';
+import 'package:e_commerce_app_clean/features/auth_feature/presentation/manager/Auth_cubit.dart';
 import 'package:e_commerce_app_clean/features/auth_feature/presentation/manager/auth_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/components/custom_elevated_button.dart';
 import '../../../../core/components/custom_text_form_field.dart';
@@ -43,9 +45,12 @@ class _RegisterScreenViewState extends State<RegisterScreenView> {
           DialogueUtils.hideLoading(context);
           DialogueUtils.showMessage(
             context: context,
-            message: state.responseEntity.message!,
+              message: "Register Successfully",
             posActionName: "OK",
             title: "Success",
+              posAction: () {
+                GoRouter.of(context).push(AppRoutes.loginRoute);
+              }
           );
         }
       },

@@ -4,12 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/use_cases/login_use_case.dart';
+
 @injectable
 class AuthViewModel extends Cubit<AuthStates> {
   RegisterUseCase registerUseCase;
+  LoginUseCase loginUseCase;
 
-  AuthViewModel({required this.registerUseCase})
-    : super(RegisterInitialState());
+  AuthViewModel({required this.registerUseCase, required this.loginUseCase})
+      : super(AuthInitialState());
 
   TextEditingController fullNameController = TextEditingController(
     text: "Ahmed Fayed",
@@ -46,6 +49,19 @@ class AuthViewModel extends Cubit<AuthStates> {
           emit(RegisterSuccessState(responseEntity: response));
         },
       );
+    }
+  }
+
+  void login() async {
+    if (formKey.currentState!.validate() == true) {
+      emit(LoginLoadingState());
+      var either = await loginUseCase.invoke(
+          emailController.text, passwordController.text);
+      either.fold((error) {
+        emit(LoginErrorState(error: error));
+      }, (response) {
+        emit(LoginSuccessState(response: response));
+      });
     }
   }
 }

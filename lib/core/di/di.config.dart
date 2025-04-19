@@ -26,6 +26,19 @@ import '../../features/auth_feature/domain/use_cases/register_use_case.dart'
     as _i716;
 import '../../features/auth_feature/presentation/manager/Auth_cubit.dart'
     as _i604;
+import '../../features/main_screen/tabs/home/data/data_sources/home_data_source_impl.dart'
+    as _i1014;
+import '../../features/main_screen/tabs/home/data/repositories/home_repository_impl.dart'
+    as _i656;
+import '../../features/main_screen/tabs/home/domain/repositories/data_source/home_data_source.dart'
+    as _i32;
+import '../../features/main_screen/tabs/home/domain/repositories/repo/home_repository.dart'
+    as _i833;
+import '../../features/main_screen/tabs/home/domain/use_cases/get_all_brands_use_case.dart'
+    as _i519;
+import '../../features/main_screen/tabs/home/domain/use_cases/get_all_categories_use_case.dart'
+    as _i1069;
+import '../../features/main_screen/tabs/home/presentation/manager/home_tab_view_model.dart';
 import '../api/api_manager.dart' as _i1047;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -38,6 +51,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i1047.ApiManager>(() => _i1047.ApiManager());
     gh.factory<_i711.AuthDataSource>(
       () => _i230.AuthDataSourceImpl(apiManager: gh<_i1047.ApiManager>()),
+    );
+    gh.factory<_i32.HomeDataSource>(
+      () => _i1014.HomeDataSourceImpl(apiManager: gh<_i1047.ApiManager>()),
+    );
+    gh.factory<HomeTabViewModel>(
+      () => HomeTabViewModel(
+        getAllCategoriesUseCase: gh<_i1069.GetAllCategoriesUseCase>(),
+        getAllBrandsUseCase: gh<_i519.GetAllBrandsUseCase>(),
+      ),
     );
     gh.factory<_i115.AuthRepository>(
       () =>
@@ -53,6 +75,18 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i604.AuthViewModel(
         registerUseCase: gh<_i716.RegisterUseCase>(),
         loginUseCase: gh<_i603.LoginUseCase>(),
+      ),
+    );
+    gh.factory<_i833.HomeRepository>(
+      () => _i656.HomeRepositoryImpl(homeDataSource: gh<_i32.HomeDataSource>()),
+    );
+    gh.factory<_i519.GetAllBrandsUseCase>(
+      () =>
+          _i519.GetAllBrandsUseCase(homeRepository: gh<_i833.HomeRepository>()),
+    );
+    gh.factory<_i1069.GetAllCategoriesUseCase>(
+      () => _i1069.GetAllCategoriesUseCase(
+        homeRepository: gh<_i833.HomeRepository>(),
       ),
     );
     return this;

@@ -2,11 +2,12 @@ import 'package:e_commerce_app_clean/core/components/custom_text_form_field.dart
 import 'package:e_commerce_app_clean/core/utils/app_assets.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/categories/presentation/pages/categories_screen.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/favorite/presentation/pages/favorite_screen.dart';
-import 'package:e_commerce_app_clean/features/main_screen/tabs/home/presentation/pages/home_screen.dart';
+import 'package:e_commerce_app_clean/features/main_screen/tabs/home/presentation/pages/home_tab.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/user/presentation/pages/user_screen.dart';
 import 'package:e_commerce_app_clean/features/main_screen/widgets/build_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
 
@@ -19,7 +20,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
-    HomeScreen(), CategoriesScreen(), FavoriteScreen(), UserScreen()
+    HomeTab(), CategoriesScreen(), FavoriteScreen(), UserScreen()
   ];
   int selectedIndex = 0;
 

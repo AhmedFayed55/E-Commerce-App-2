@@ -16,7 +16,7 @@ class AppRoutes {
     initialLocation: mainRoute,
     routes: [
       GoRoute(path: splashRoute, builder: (context, state) => SplashScreen()),
-      GGoRoute(path: loginRoute, builder: (context, state) => LoginScreenView()),
+      GoRoute(path: loginRoute, builder: (context, state) => LoginScreenView()),
       GoRoute(path: mainRoute, builder: (context, state) => MainScreen()),
       GoRoute(
         path: registerRoute,

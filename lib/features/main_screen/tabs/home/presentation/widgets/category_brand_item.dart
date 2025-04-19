@@ -1,12 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../../core/utils/app_colors.dart';
 
 class CategoryBrandItem extends StatelessWidget {
-  const CategoryBrandItem({super.key});
+  const CategoryBrandItem(
+      {super.key, required this.imagePath, required this.categoryName});
 
+  final String imagePath;
+  final String categoryName;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,13 +31,13 @@ class CategoryBrandItem extends StatelessWidget {
             width: double.infinity,
             height: 100.h,
             fit: BoxFit.cover,
-            imageUrl: 'https://picsum.photos/250/300',
+            imageUrl: imagePath,
           ),
         ),
         Expanded(
           flex: 1,
           child: Text(
-            "Laptop & Electronics",
+            categoryName,
             textWidthBasis: TextWidthBasis.longestLine,
             softWrap: true,
             textAlign: TextAlign.center,

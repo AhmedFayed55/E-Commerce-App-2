@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/di/di.dart';
-import '../widgets/products_grid_view.dart';
+import '../widgets/categories_or_brands_grid_view.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
@@ -36,7 +36,8 @@ class HomeTab extends StatelessWidget {
             builder: (context, state) {
               if (state is GetAllCategoriesSuccessState) {
                 return SliverToBoxAdapter(
-                  child: ProductsGridView(content: viewModel.categories),
+                  child: CategoryOrBrandsGridView(
+                      content: viewModel.categories),
                 );
               } else if (state is GetAllCategoriesErrorState) {
                 return SliverToBoxAdapter(
@@ -44,8 +45,10 @@ class HomeTab extends StatelessWidget {
                 );
               } else {
                 return SliverToBoxAdapter(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,),);
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryColor,),
+                  ),);
               }
             },
           ),
@@ -61,7 +64,7 @@ class HomeTab extends StatelessWidget {
             builder: (context, state) {
               if (state is GetAllBrandsSuccessState) {
                 return SliverToBoxAdapter(
-                  child: ProductsGridView(content: viewModel.brands),
+                  child: CategoryOrBrandsGridView(content: viewModel.brands),
                 );
               } else if (state is GetAllBrandsErrorState) {
                 return SliverToBoxAdapter(

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../domain/entities/category_or_brand_response_entity.dart';
 import 'category_brand_item.dart';
 
-class ProductsGridView extends StatelessWidget {
-  const ProductsGridView({super.key, required this.content});
+class CategoryOrBrandsGridView extends StatelessWidget {
+  const CategoryOrBrandsGridView({super.key, required this.content});
 
   final List<CategoryOrBrandDataEntity> content;
   @override

@@ -48,7 +48,8 @@ dependencies:
   shared_preferences: ^2.5.3
   cached_network_image: ^3.4.1
   flutter_image_slideshow: ^0.1.6
-  curved_labeled_navigation_bar: ^2.0.6
+  auto_size_text: ^3.0.0
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_test:

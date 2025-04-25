@@ -1,8 +1,8 @@
 import 'package:e_commerce_app_clean/core/components/custom_text_form_field.dart';
 import 'package:e_commerce_app_clean/core/utils/app_assets.dart';
-import 'package:e_commerce_app_clean/features/main_screen/tabs/categories/presentation/pages/categories_screen.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/favorite/presentation/pages/favorite_screen.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/home/presentation/pages/home_tab.dart';
+import 'package:e_commerce_app_clean/features/main_screen/tabs/products/presentation/pages/products_tab.dart';
 import 'package:e_commerce_app_clean/features/main_screen/tabs/user/presentation/pages/user_screen.dart';
 import 'package:e_commerce_app_clean/features/main_screen/widgets/build_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Widget> screens = [
-    HomeTab(), CategoriesScreen(), FavoriteScreen(), UserScreen()
+    HomeTab(), ProductsTab(), FavoriteScreen(), UserScreen()
   ];
   int selectedIndex = 0;
 
@@ -45,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
 
 PreferredSizeWidget _buildAppBar(int index, BuildContext context) {
   return AppBar(
+    elevation: 0,
     leadingWidth: double.infinity,
     toolbarHeight: index != 3 ? 120.h : 65.h,
     leading: Padding(
